@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
+import MessagesList from 'components/MessagesList';
 
 class App extends Component {
     render() {
         return (
             <div>
-                react...
+                <MessagesList/>
             </div>
         )
     }
