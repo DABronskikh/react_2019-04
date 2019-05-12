@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import MessagesList from 'components/MessagesList';
+
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import {blue, red} from '@material-ui/core/colors';
+
+import Layout from 'components/Layout';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: blue,
+        secondary: red,
+    },
+    status: {
+        danger: 'orange',
+    },
+});
+
 
 class App extends Component {
     render() {
         return (
-            <div>
-                <MessagesList/>
-            </div>
+            <MuiThemeProvider theme={theme}>
+                <Layout/>
+            </MuiThemeProvider>
         )
     }
 }

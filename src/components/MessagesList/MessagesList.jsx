@@ -13,11 +13,21 @@ export default class MessagesList extends Component {
         }
     }
 
+    componentDidMount() {
+        const {messages} = this.props;
+        this.setState((prevState) => ({
+            messages: prevState.messages.concat(messages),
+        }));
+    }
+
     handleMessage = (message) => {
         //console.log('MessagesList | ', message);
         this.setState((prevState) => ({
             messages: prevState.messages.concat([message]),
         }));
+
+        const {onMessage} = this.props;
+        onMessage(this.state);
     };
 
     componentDidUpdate() {
@@ -32,7 +42,7 @@ export default class MessagesList extends Component {
         return (
             <div className={"message-container"}>
                 {messages.map((el, idx) => <Message key={idx} author={el.author} message={el.message}/>)}
-                <hr/>
+
                 <MessageForm onMessage={this.handleMessage}/>
             </div>
         );
